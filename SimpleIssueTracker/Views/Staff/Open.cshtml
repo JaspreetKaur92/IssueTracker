@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SimpleIssueTracker.Models.Customer>
+
+@{
+    ViewBag.Title = "Open";
+}
+
+<h2>Open</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnqSubject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnquiryBody)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ticket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnqSubject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnquiryBody)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ticket)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+      
+    </tr>
+}
+
+</table>

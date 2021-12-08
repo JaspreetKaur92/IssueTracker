@@ -1,0 +1,102 @@
+﻿@model IEnumerable<SimpleIssueTracker.Models.Customer>
+
+@{
+    ViewBag.Title = "Staff Dash Board";
+}
+
+<h2>StaffDashBoard</h2>
+<script src="~/Content/jquery/jquery.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#search').keyup(function () {
+
+            var text = $(this).val();
+            $('#ListForSearch').hide();
+            $('#ListForSearch:contains("' + text + '")').show();
+
+        });
+    });
+    
+
+   
+</script>
+<p>
+
+    @Html.ActionLink("New unassigned tickets", "Unassigned")   |
+    @Html.ActionLink("Open Tickets", "Open")   |
+    @Html.ActionLink("On hold tickets", "Onhold")   |
+    @Html.ActionLink("Closed/Cancelled Tickets", "Closed")
+
+
+</p>
+@Html.TextBox("search")
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnqSubject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnquiryBody)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ticket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="ListForSearch">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnqSubject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnquiryBody)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ticket)
+            </td>
+
+            <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+           
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffId)
+            </td>
+            <td>
+
+                @Html.ActionLink("Assign Ticket", "AssignTicket", "Staff", new { id = item.Id }, null) |
+                @Html.ActionLink("Reply", "Reply", "Staff", new { id = item.Id, }, null)
+                @*    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            </td>
+            </tr>
+        }
+
+</table>
